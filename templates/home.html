@@ -1,0 +1,474 @@
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <!-- For footer` -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!-- own css -->
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Full-width input fields */
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+      }
+
+      /* Add a background color when the inputs get focus */
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+
+      /* Set a style for all buttons */
+      button {
+        background-color: #04aa6d;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        /*opacity: 0.9;*/
+        top: 10%;
+        left: 50%;
+      }
+
+      button:hover {
+        opacity: 1;
+      }
+
+      /* Extra styles for the cancel button */
+      .cancelbtn {
+        padding: 14px 20px;
+        background-color: #f44336;
+      }
+
+      /* Float cancel and signup buttons and add an equal width */
+      .cancelbtn,
+      .signupbtn {
+        float: left;
+        width: 50%;
+      }
+
+      /* Add padding to container elements */
+      .container {
+        padding: 16px;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0%;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: #474e5d;
+        padding-top: 50px;
+      }
+
+      /* Modal Content/Box */
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+      }
+
+      /* Style the horizontal ruler */
+      hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+      }
+
+      /* The Close Button (x) */
+      .close {
+        position: absolute;
+        right: 35px;
+        top: 15px;
+        font-size: 40px;
+        font-weight: bold;
+        color: #f1f1f1;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #f44336;
+        cursor: pointer;
+      }
+
+      /* Clear floats */
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      .cntr {
+        text-align: center;
+      }
+
+      .signupbtn {
+        width: 100%;
+      }
+
+      
+
+      #fh1 {
+        margin-top: 20px;
+      }
+      #sub-nav {
+        display: flex;
+        justify-content: space-around;
+      }
+      #logout-btn {
+        background-color: rgb(50, 122, 255);
+      }
+      #fh3 {
+        text-align: left;
+        font-size: 19px;
+        padding-top: 15px;
+      }
+      @media screen and (max-width: 600px) {
+        #fh3 {
+          font-size: 15px;
+          text-align: left;
+        }
+      }
+      #fh6 {
+        text-align: right;
+        font-size: 15px;
+        /* padding-bottom: 20px; */
+        font-weight: normal;
+      }
+      @media screen and (max-width: 600px) {
+        #fh6 {
+          font-size: 15px;
+          text-align: right;
+          font-weight: normal;
+        }
+      }
+      #fh5 {
+        display: flex;
+        justify-content: space-around;
+        text-align: left;
+        font-size: 13px;
+        padding-top: 3px;
+        width: 90px;
+        color: rgb(223, 223, 223);
+        height: 20px;
+        font-weight: normal;
+        background-color: rgb(158, 158, 158);
+        border-radius: 20px;
+        /* padding-top: 20px; */
+        /* background-color: blue; */
+      }
+      @media screen and (max-width: 600px) {
+        #fh5 {
+          font-size: 10px;
+        }
+      }
+      a {
+        color: rgb(0, 132, 255);
+      }
+      a:hover {
+        text-decoration: none;
+        color: darkblue;
+      }
+      h5 {
+        color: rgb(133, 133, 133);
+      }
+
+      .horizontall-rule {
+        border-top: 2.5px solid #1885a1;
+        margin: auto;
+        width: 50%;
+      }
+
+    </style>
+
+    <title>HOME | QES</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="position: sticky; top: 0; background-color:#095569;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="/static/icon/icon1.png" alt="" width="30" height="24" class="d-inline-block align-text-top"><span style="font-family:segoe ui; font-size: 1.5rem;"> <b>Q E S</b> </span>   
+          </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+           
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About Us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Who are we</a></li>
+                <li><a class="dropdown-item" href="#">What do we do</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">What are we trying to accomplish</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/questions">All Questions</a>
+            </li>
+
+            <!-- Jinja, to display logout when already logged in -->
+            {% if user.is_authenticated %}
+            <li class="nav-item" style="color: white; padding: 8px">
+              Hello, {{user.first_name}}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="accounts/logout">Logout</a>
+            </li>
+            {% else %}
+
+            <!-- This is for user registration purposes -->
+            <li class="nav-item">
+              <a class="nav-link" href="accounts/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="accounts/login">Login</a>
+            </li>
+            {% endif %}
+
+            
+          </ul>
+
+          
+          <form class="d-flex" action="" method="GET">
+            <input
+              class="form-control me-2"
+              type="search"
+              name = "search-area"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            
+          </form>
+          <a href="/questions">
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <br />
+    
+
+    <h2 class="my-8 text-center" style="font-family:segoe ui; font-size: 2.5rem; color: #0488aa;">Quora for Engineering Students</h2>
+    <h5  class="my-8 text-center" style="font-family:segoe ui;margin-bottom: -10px; color: #037795db;"> <i> Sometimes you need a little help from below.</i></h5>
+    <br>
+    
+    <div class="horizontall-rule"></div>
+
+
+
+
+    <!-- ask questions -->
+    <!-- Ask Question button -->
+    <div>
+      <div class="cntr">
+        <a href="/questions/new" style="text-decoration:none; color: inherit;">
+        <button
+          onclick="document.getElementById('id01').style.display='block'"
+          style="width: auto; font-size: 20px; margin-top: 25px;"
+        >
+          Ask Question
+        </button>
+      </a> 
+      </div>
+
+    </div>
+    <br>
+
+    <div>
+      <div class="cntr">
+        <a href="/questions" style="text-decoration:none;color: inherit; ">
+        <button
+          onclick="document.getElementById('id01').style.display='block'"
+          style="width: auto; font-size: 35px; background-color:#0488aa;"
+        >
+          Top Questions
+        </button>
+      </a> 
+      </div>
+    </div>
+    <br>
+
+    <!-- May delete later -->
+    <div class="container" style="width: 100%;max-width: 126.4rem; margin: 0 auto; padding: 0 1.5rem;">
+
+<div class="section-head" style="display: flex; flex-direction: column;justify-content: center;align-items: center;color: var(--black-800);margin-bottom: 12px;">
+  <h2 class="section-title" style="font-size: 2.4rem; font-family: Roboto Slab Bold; 
+  font-weight: 500;color: #095569;font-family:segoe ui; ">For Engineers, by Engineers
+  </h2>
+  <div class="section-line" style="    width: 64px;
+  height: 8px;
+  margin: 0.5rem auto;
+  border-radius: 100rem;
+  background-color: rgb(12, 142, 140);margin-bottom: 17px;"></div>
+  <p class="section-description" style=" text-align: center;   font-size: 1.0rem;
+  max-width: 31.6rem;color: #0488aa;font-family:segoe ui; font-weight:550">Quora For Engineering Students is an open community for all Engineering Students. We help you get answers to your toughest Engineering questions, share knowledge with other Students.
+  </p>
+</div>
+</div>
+
+
+    <img src="/static/images/wrong_question_header.jpg" alt="" style="width:100%; height:500px;">
+    <br>
+
+
+
+
+
+
+    <!-- footer -->
+<div>
+    <footer class="bg-dark text-white pt-1 pb-1">
+
+      <div class="container text-center text-md-left" >
+    
+        <div class="row text-center text-md-left">
+    
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold text-warning">QUORA FOR ENGINEERING STUDENTS</h5>
+            <!-- <p>ABOUT THE WEBSITE</p> -->
+            
+          </div>
+    
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold text-warning">About Us</h5>
+       
+    
+          </div>
+    
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold text-warning">TERMS AND CONDITIONS </h5>
+          
+          </div>
+    
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold text-warning" >Contact Us</h5>
+           
+            <p>
+              <i class="fas fa-envelope mr-3"></i>quoraforengineers@gmail.com
+            </p>
+           
+          
+        </div>
+    
+        <hr class="mb-4">
+    
+        <div class="row align-items-center">
+    
+          <div class="col-md-7 col-lg-8">
+            <p>	Copyright ©2020 All rights reserved by:
+              <a href="#" style="text-decoration: none;">
+                <strong class="text-warning">QES</strong>
+              </a></p>
+            
+          </div>
+    
+          <div class="col-md-5 col-lg-4">
+            <div class="text-center text-md-right">
+    
+              <ul class="list-unstyled list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-facebook"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-google-plus"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-linkedin-in"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-youtube"></i></a>
+                </li>
+              </ul>
+              
+            </div>
+            
+          </div>
+          
+        </div>
+    
+      </div>
+      
+    </footer>
+  </div>
+
+
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

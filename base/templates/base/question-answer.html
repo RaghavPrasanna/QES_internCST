@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        * {
+          box-sizing: border-box;
+        }
+  
+        /* Full-width input fields */
+        input[type="text"],
+        input[type="password"] {
+          width: 100%;
+          padding: 15px;
+          margin: 5px 0 22px 0;
+          display: inline-block;
+          border: none;
+          background: #f1f1f1;
+        }
+  
+        /* Add a background color when the inputs get focus */
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+          background-color: #ddd;
+          outline: none;
+        }
+  
+        /* Set a style for all buttons */
+        button {
+          background-color: #04aa6d;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          opacity: 0.9;
+          top: 10%;
+          left: 50%;
+        }
+  
+        button:hover {
+          opacity: 1;
+        }
+  
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+          padding: 14px 20px;
+          background-color: #f44336;
+        }
+  
+        /* Float cancel and signup buttons and add an equal width */
+        .cancelbtn,
+        .signupbtn {
+          float: left;
+          width: 50%;
+        }
+  
+        /* Add padding to container elements */
+        .container {
+          padding: 16px;
+        }
+  
+        /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          left: 0%;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: #474e5d;
+          padding-top: 50px;
+        }
+  
+        /* Modal Content/Box */
+        .modal-content {
+          background-color: #fefefe;
+          margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+          border: 1px solid #888;
+          width: 80%; /* Could be more or less, depending on screen size */
+        }
+  
+        /* Style the horizontal ruler */
+        hr {
+          border: 1px solid #f1f1f1;
+          margin-bottom: 25px;
+        }
+  
+        /* The Close Button (x) */
+        .close {
+          position: absolute;
+          right: 35px;
+          top: 15px;
+          font-size: 40px;
+          font-weight: bold;
+          color: #f1f1f1;
+        }
+  
+        .close:hover,
+        .close:focus {
+          color: #f44336;
+          cursor: pointer;
+        }
+  
+        /* Clear floats */
+        .clearfix::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+  
+        .cntr {
+          text-align: center;
+        }
+  
+        .signupbtn {
+          width: 100%;
+        }
+  
+        /*From destiny_F*/
+  
+        #fh1 {
+          margin-top: 20px;
+        }
+        #sub-nav {
+          display: flex;
+          justify-content: space-around;
+        }
+        #logout-btn {
+          background-color: rgb(50, 122, 255);
+        }
+        #fh3 {
+          text-align: left;
+          font-size: 19px;
+          padding-top: 15px;
+        }
+        @media screen and (max-width: 600px) {
+          #fh3 {
+            font-size: 15px;
+            text-align: left;
+          }
+        }
+        #fh6 {
+          text-align: right;
+          font-size: 15px;
+          /* padding-bottom: 20px; */
+          font-weight: normal;
+        }
+        @media screen and (max-width: 600px) {
+          #fh6 {
+            font-size: 15px;
+            text-align: right;
+            font-weight: normal;
+          }
+        }
+        #fh5 {
+          display: flex;
+          justify-content: space-around;
+          text-align: left;
+          font-size: 13px;
+          padding-top: 3px;
+          width: 90px;
+          color: rgb(223, 223, 223);
+          height: 20px;
+          font-weight: normal;
+          background-color: rgb(158, 158, 158);
+          border-radius: 20px;
+          /* padding-top: 20px; */
+          /* background-color: blue; */
+        }
+        @media screen and (max-width: 600px) {
+          #fh5 {
+            font-size: 10px;
+          }
+        }
+        a {
+          color: rgb(0, 132, 255);
+        }
+        a:hover {
+          text-decoration: none;
+          color: darkblue;
+        }
+        h5 {
+          color: rgb(133, 133, 133);
+        }
+
+        #cnclbtn:hover{
+          opacity: 1;
+        }
+      </style>
+    <title>ANSWERS | QES</title>
+</head>
+<body style = " background-color: 		#708090">
+    <div id="id01" class="">
+       
+        <br><br>
+
+        <form class="modal-content" action="" method="POST">
+            {% csrf_token %}
+
+            <div class="container" >
+              <h2>Your Answer</h2>
+              <p><strong>Give your answer here!!</strong></p>
+              <hr />
+              <label for="ques"
+                ><b>
+                  <u><h3>Answer:</h3></u></b
+                ></label
+              ><br />
+              <label for="ans"
+                ><b> <h5>Your Name:</h5></b></label
+              >
+              <input
+                type="text"
+                placeholder="Enter here"
+                id="name"
+                name="name"
+                required
+              />
+              <label for="ans"
+                ><b> <h5>Your Answer:</h5></b></label
+              >
+              <!-- <input type="text" placeholder="Enter here" name="quescontent" required /> -->
+              <textarea
+                class="form-control"
+                rows="3"
+                id="content"
+                name="content"
+                required
+              ></textarea>
+
+              <br />
+              <br />
+
+              <div class="clearfix">
+                {{ form.media }}
+                <button type="submit" class="signupbtn" style = "width:49%">Submit Answer</button>
+                <a href="/questions/" ><button type="button" class="canclebtn" id="cnclbtn" style="background-color: #f44336; width:49%; ">Cancle</button></a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+
+        <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+</body>
+</html>

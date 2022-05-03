@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- This is the bootstrap link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <style>
+       
+      /*  body{
+            margin-top: 100px;
+            font-family: 'Poppins', sans-serif;
+        }   */
+
+
+        #fh1{
+            margin-top: 20px;
+        }
+        #sub-nav{
+            display: flex;
+            justify-content: space-around;
+        }
+        #logout-btn{
+            background-color: rgb(50, 122, 255);
+        }
+        #fh3{
+            text-align: left;
+            font-size: 19px;
+            padding-top: 15px;
+        }
+        @media screen and (max-width: 600px) {
+            #fh3{
+                font-size: 15px;
+                text-align: left;
+            }
+        }
+        #fh6{
+            text-align: right;
+            font-size: 15px;
+            /* padding-bottom: 20px; */
+            font-weight: normal;
+        }
+        @media screen and (max-width: 600px) {
+            #fh6{
+                font-size: 15px;
+                text-align: right;
+                font-weight: normal;
+            }
+        }
+        #fh5{
+            display: flex;
+            justify-content: space-around;
+            text-align: left;
+            font-size: 13px;
+            padding-top: 3px;
+            width: 90px;
+            color: rgb(223, 223, 223);
+            height: 20px;
+            font-weight: normal;
+            background-color: rgb(158, 158, 158);
+            border-radius: 20px;
+            /* padding-top: 20px; */
+            /* background-color: blue; */
+        }
+        @media screen and (max-width: 600px) {
+            #fh5{
+                font-size: 10px;
+            }
+        }
+        a{
+            color: rgb(0, 132, 255);
+        }
+        a:hover{
+            text-decoration: none;
+            color: darkblue;
+            
+        }
+        h5{
+            color: rgb(133, 133, 133);
+        }
+
+        /*for ask questions button*/
+        .cntr {
+          text-align: center;
+        }
+        button {
+          background-color: #04aa6d;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+         /* opacity: 0.9;*/
+          top: 10%;
+          left: 50%;
+        }
+
+        button:hover {
+          opacity: 1;
+        }
+
+    </style>
+
+    <title>QUESTIONS | QES</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark " style="position: sticky; top: 0; background-color:#095569;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="/static/icon/icon1.png" alt="" width="30" height="24" class="d-inline-block align-text-top"><span style="font-family:segoe ui; font-size: 1.5rem;"> <b>Q E S</b> </span>   
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+           
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About Us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Who are we</a></li>
+                <li><a class="dropdown-item" href="#">What do we do</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">What are we trying to accomplish</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact Us</a>
+            </li>
+
+            <!-- Jinja, to display logout when already logged in -->
+            {% if user.is_authenticated %}
+            <li class="nav-item" style="color: white; padding: 8px">
+              Hello, {{user.first_name}}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/logout">Logout</a>
+            </li>
+            {% else %}
+
+            <!-- This is for user registration purposes -->
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
+          </ul>
+          <form class="d-flex" action="" method="GET">
+            <input
+              class="form-control me-2"
+              type="search"
+              name="search-area"
+              placeholder="Search"
+              aria-label="Search"
+              style=" margin: 10px;height:100%; width:250%;"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <h2 class="my-8 text-center" style="color: #0488aa;font-size: 2.5rem; margin-top: 20px;">Quora for Engineering Students</h2>
+
+
+    <div class="cntr">
+      <a href="/questions/new" style="text-decoration:none; color: inherit;">
+      <button
+        onclick="document.getElementById('id01').style.display='block'"
+        style="width: auto; font-size: 20px; "
+      >
+        Ask Question 
+      </button>
+    </a>
+    </div>
+
+
+    <div id="sub-nav">
+        <h1 id="fh1" style="color: #095569; margin-bottom: 15px;">Top Questions</h1>
+      </div>
+
+
+      <!-- To display the questions -->
+      
+      {% for question in questions %}
+      <div
+      class="container"
+      style="
+        background: linear-gradient(
+          to right,
+          rgb(173 241 255 / 81%),
+          rgba(255, 166, 0, 0.027)
+        );
+        padding: 5px;
+        box-shadow: rgba(0, 0, 0, 0.383) 0px 5px 5px 0px;
+        border-radius: 15px;
+      "
+    >
+    
+    
+      <div id="title-sec" style="display: flex; align-items: center">
+        <h3 id="fh3"><a href="{% url 'question-detail' question.id%}" style="text-decoration:none"> {{ question.title }}  &nbsp;...Click here</a></h3>
+      </div>
+      <hr />
+
+      <h6 id="fh6" style="text-align: left">
+        {{ question.content |safe }}<a href="{% url 'question-detail' question.id%}" style="text-decoration:none">&nbsp;<h6>....Answer Question</h6></a>
+      </h6>
+
+      <h6
+        id="fh6"
+        style="font-size: 10px; font-style: italic; color: rgb(155, 155, 155)"
+      >
+        Asked By: <a href="">{{ question.user }}</a>&nbsp;&nbsp;&nbsp;
+        |&nbsp;&nbsp;&nbsp; On: {{question.date_created|date:"j F, Y"}}
+      </h6>
+      <h5 style="text-align: right; font-size: 12px; font-style: italic">
+        QES
+      </h5>
+    </div>
+    <br>
+    {% endfor %}
+
+
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>

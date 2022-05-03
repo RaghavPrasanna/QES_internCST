@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <style>
+        
+
+
+        #fh1{
+            margin-top: 20px;
+        }
+        #sub-nav{
+            display: flex;
+            justify-content: space-around;
+        }
+        #logout-btn{
+            background-color: rgb(50, 122, 255);
+        }
+        /* .list-question{
+            height: 400px;
+            background-color: rgb(255, 219, 173);
+        } */
+        #fh3{
+            text-align: center;
+            font-size: 30px;
+            padding-top: 20px;
+        }
+        @media screen and (max-width: 600px) {
+            #fh3{
+                font-size: 17px;
+            }
+        }
+        #fh6{
+            text-align: justify;
+            font-size: 15px;
+            /* padding-top: 20px; */
+            padding-bottom: 20px;
+        }
+        @media screen and (max-width: 600px) {
+            #fh6{
+                font-size: 15px;
+                text-align: left;
+            }
+        }
+        #fh5{
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            font-size: 13px;
+            padding-top: 3px;
+            width: 90px;
+            color: rgb(223, 223, 223);
+            height: 20px;
+            background-color: rgb(34, 129, 253);
+            border-radius: 20px;
+            /* padding-top: 20px; */
+            /* background-color: blue; */
+        }
+        @media screen and (max-width: 600px) {
+            #fh5{
+                font-size: 10px;
+            }
+        }
+        
+        .container11{
+            width: 100%;
+            text-align: center;
+}
+    </style>
+    <title>DeleteQuestion</title>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark " style="position: sticky; top: 0; background-color:#095569;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="/static/icon/icon1.png" alt="" width="30" height="24" class="d-inline-block align-text-top"><span style="font-family:segoe ui; font-size: 1.5rem;"> <b>Q E S</b> </span>   
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+           
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About Us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Who are we</a></li>
+                <li><a class="dropdown-item" href="#">What do we do</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">What are we trying to accomplish</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact Us</a>
+            </li>
+
+            <!-- Jinja, to display logout when already logged in -->
+            {% if user.is_authenticated %}
+            <li class="nav-item" style="color: white; padding: 8px">
+              Hello, {{user.first_name}}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/logout">Logout</a>
+            </li>
+            {% else %}
+
+            <!-- This is for user registration purposes -->
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
+          </ul>
+          <form class="d-flex" action="" method="GET">
+            <input
+              class="form-control me-2"
+              type="search"
+              name="search-area"
+              placeholder="Search"
+              aria-label="Search"
+              style=" margin: 10px;height:100%; width:250%;"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="container" style="background-color: rgb(173 241 255 / 81%);; height: 200px; margin-top: 100px;" >
+            <h2 style="text-align: center; padding-top: 35px; font-family: 'Poppins', sans-serif;">Do you wanna delete this question? <b>{{ question.title }}</b></h2>
+            <div class="container11">
+                <!-- <button class="btn btn-outline-danger" type="submit" style="font-family: 'Poppins', sans-serif;"><a href="" class="btn btn-outline-danger" style="text-decoration: none;">Delete</a></button> -->
+                <button class="btn btn-outline-danger" type="submit" style="font-family: 'Poppins', sans-serif;">Delete</button>
+                <a href=" {% url 'question-detail' question.id %} " class="btn btn-outline-success" >Cancel</a>
+            </div>
+        </div>
+    </form>
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>
